@@ -2,6 +2,7 @@ package proyectomundial;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -59,6 +60,9 @@ public class GUIManual extends JFrame {
     
     private JPanel jPanelMenuDashboardRes;
     private JLabel btnDashboardRes;
+    
+    private JPanel jPanelMenuIniciarSes;
+    private JLabel btnDashboardSes;
         
     // Elementos de panel de contenido
     private JPanel jPanelRight;
@@ -112,6 +116,9 @@ public class GUIManual extends JFrame {
         jPanelMenuDashboardRes = new JPanel();
         btnDashboardRes = new JLabel();
         
+        jPanelMenuIniciarSes = new JPanel();
+        btnDashboardRes = new JLabel();
+        
         // Pinta el logo de la aplicación
         pintarLogo();
         
@@ -132,6 +139,8 @@ public class GUIManual extends JFrame {
         
         // Pinta y ajuste diseño del contenedor del panel izquierdo
         pintarPanelIzquierdo();
+        
+        pintarMenuIniciarSes();
         
         
         
@@ -232,6 +241,26 @@ public class GUIManual extends JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 System.out.println("Selecciones");
                 accionSelecciones();
+            }
+        });
+    }
+    private void pintarMenuIniciarSes() {
+        btnHome.setIcon(new ImageIcon(getClass().getResource("/resources/icons/home.png")));
+        btnHome.setText("Iniciar Sesion");
+        btnHome.setForeground(new java.awt.Color(255, 255, 255));
+        
+        JLabel VacioIniciarSes=new JLabel();
+        jPanelMenuHome.setBackground(new java.awt.Color(17, 41, 63));
+        jPanelMenuHome.setPreferredSize((new java.awt.Dimension(220, 35)));
+        jPanelMenuHome.setLayout(new BorderLayout(15, 0));
+        jPanelMenuHome.add(VacioIniciarSes, BorderLayout.WEST);
+        jPanelMenuHome.add(btnHome, BorderLayout.CENTER);
+        jPanelMenu.add(jPanelMenuHome);
+        
+        btnHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                System.out.println("Iniciar Sesion");
+                accionDashboardIniciarSes();
             }
         });
     }
@@ -375,7 +404,7 @@ public class GUIManual extends JFrame {
         btnDashboardSel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 System.out.println("Dashboard Selecciones");
-                accionDashboardSel();
+                accionDashboardIniciarSes();
             }
         });
     }
@@ -470,7 +499,24 @@ public class GUIManual extends JFrame {
         jPanelMain.repaint();
         jPanelMain.revalidate();        
     }
+     private void accionDashboardIniciarSes() {
+    Scanner sc=new Scanner (System.in);
+    System.out.println("Ingrese su nombre de usuario: ");
+    String usuario = sc.nextLine();
+    System.out.println("Ingrese su contraseña: ");
+    String contraseña = sc.nextLine();
+
+    boolean credencialesValidas = 
+
+    if (credencialesValidas) {
+        haySesion = true;
+        System.out.println("Sesión iniciada correctamente.");
+    } else {
+        System.out.println("Credenciales incorrectas. Inténtelo nuevamente.");
+    }
+
     
+    }
     /**
      * Función que permite darle estilos y agregar los componentes gráficos del contendor de la parte 
      * izquierda de la interfaz, dónde se visulaiza el menú de navegaación
